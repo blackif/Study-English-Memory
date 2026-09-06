@@ -52,6 +52,8 @@
     {"word":"phone","first_unit":"unit-003","units":["unit-003"],"status":"active","mastery":{"recognition":5,"meaning":4,"usage":4,"overall":4},"encounter_count":1,"review_count":0,"collocations":["use a phone"],"common_errors":[],"last_reviewed":"2026-09-06"},
     {"word":"shop","first_unit":"unit-003","units":["unit-003"],"status":"active","mastery":{"recognition":5,"meaning":4,"usage":4,"overall":4},"encounter_count":1,"review_count":0,"collocations":["go shopping"],"common_errors":[],"last_reviewed":"2026-09-06"},
     {"word":"weekend","first_unit":"unit-003","units":["unit-003"],"status":"active","mastery":{"recognition":5,"meaning":4,"usage":4,"overall":4},"encounter_count":2,"review_count":0,"collocations":[],"common_errors":[],"last_reviewed":"2026-09-06"},
-    {"word":"often","first_unit":"unit-003","units":["unit-003"],"status":"active","mastery":{"recognition":5,"meaning":4,"usage":4,"overall":4},"encounter_count":1,"review_count":0,"collocations":[],"common_errors":[],"last_reviewed":"2026-09-06"}
+    {"word":"often","first_unit":"unit-003","units":["unit-003"],"status":"active","mastery":{"recognition":5,"meaning":4,"usage":4,"overall":4},"encounter_count":1,"review_count":0,"collocations":[],"common_errors":[],"last_reviewed":"2026-09-06"},
+    {"word":"up","first_unit":"unit-003","units":["unit-003"],"status":"active","mastery":{"recognition":5,"meaning":4,"usage":4,"overall":4},"encounter_count":1,"review_count":0,"collocations":["get up"],"common_errors":[],"last_reviewed":"2026-09-06"},
+    {"word":"shopping","first_unit":"unit-003","units":["unit-003"],"status":"active","mastery":{"recognition":5,"meaning":4,"usage":4,"overall":4},"encounter_count":1,"review_count":0,"collocations":["go shopping"],"common_errors":[],"last_reviewed":"2026-09-06"}
   ]
 }
