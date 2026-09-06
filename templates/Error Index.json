@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "errors": [
+    {
+      "id": "ERR-001",
+      "type": "grammar",
+      "category": "subject_verb_agreement",
+      "incorrect": "He go to work.",
+      "correct": "He goes to work.",
+      "first_seen": "unit-003",
+      "last_seen": "unit-014",
+      "frequency": 7,
+      "severity": "high",
+      "status": "needs_review",
+      "related_grammar": ["Present Simple"],
+      "review_history": ["unit-006", "unit-010"],
+      "next_review": "unit-015"
+    }
+  ]
+}
