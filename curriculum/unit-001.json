@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "unit": {
+    "id": "unit-001",
+    "level": "level-1",
+    "group": 1,
+    "number": 1,
+    "type": "learning",
+    "title": "Foundation Diagnostic and Core Sentence Structure",
+    "overview": "重新建立课程体系的第一课。先确认既有基础，再系统巩固英语句子的核心结构。既往 Unit 1–14 的学习内容视为历史知识，不在本课程中重复标记为全新知识。"
+  },
+  "objectives": [
+    "Identify the basic structure of an English sentence.",
+    "Distinguish subject, verb and complement/object in simple sentences.",
+    "Use previously learned basic tense knowledge as review rather than new material.",
+    "Produce simple English sentences accurately and independently."
+  ],
+  "grammar": {
+    "new": ["Basic sentence structure: subject + verb + complement/object"],
+    "review": ["Present Simple", "Present Continuous", "Past Simple", "Past Continuous", "Future with will", "Present Perfect", "There is / There are"],
+    "focus": ["Subject identification", "Verb identification", "Basic word order"]
+  },
+  "vocabulary": {
+    "theme": "Daily life and work",
+    "core": [],
+    "supporting": [],
+    "review": []
+  },
+  "collocations": [],
+  "sentence_patterns": [
+    "Subject + Verb.",
+    "Subject + Verb + Object.",
+    "Subject + be + Complement."
+  ],
+  "lesson_flow": [
+    "introduction",
+    "explanation",
+    "recognition",
+    "controlled_practice",
+    "guided_output",
+    "independent_output",
+    "assessment"
+  ],
+  "practice": {
+    "grammar": [],
+    "vocabulary": [],
+    "output": []
+  },
+  "assessment": {
+    "grammar": [],
+    "vocabulary": [],
+    "output": []
+  },
+  "completion_criteria": {
+    "minimum_understanding": 0.7,
+    "minimum_output": 0.6
+  },
+  "next_unit": "unit-002"
+}
