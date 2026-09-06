@@ -1,243 +1,119 @@
 ---
 name: study-english-memory
-description: Execution layer for the user's personal, long-term, curriculum-based English learning program. Tracks current level, unit progress, vocabulary/grammar mastery and recurring errors as JSON state across sessions in data/, curriculum/, history/, tests/. Use this skill whenever the user wants to continue or start an English lesson/Unit (e.g. "继续学英语", "开始今天的英语课", "unit 001"), asks about their vocabulary/grammar mastery, error history, or progress, wants a Group Review or Major Test, wants to end/close the current Unit, or wants to reset/reinitialize their English learning data. Also use this skill any time a task needs to read or update files under data/, curriculum/, history/, tests/, templates/, or script/ in this repository.
+description: Execution layer for the user's personal, long-term, curriculum-based English learning program. Tracks current level, unit progress, vocabulary/grammar mastery and recurring errors as JSON state across sessions in data/, curriculum/, history/, tests/. Use this skill whenever the user wants to continue or start an English lesson/Unit, asks about mastery/progress/errors, wants a Group Review or Major Test, wants to end a Unit, or wants to reset/reinitialize the repository.
 ---
 
 # Study English Memory Skill
 
 ## 1. Purpose
-This Skill is the execution layer for the user's long-term English learning system.
+This Skill is the execution layer for the user's long-term curriculum-based English learning system.
 
 ## 2. Source of truth and directory roles
-- `SKILL.md`: execution rules. It must not contain current learner state.
+- `SKILL.md`: execution rules; never store current learner state here.
 - `data/`: current state and indexes.
-- `curriculum/`: actual lesson definitions. One JSON file per learning Unit.
-- `history/`: actual AI-user conversation records for completed Units, stored as Markdown. There is intentionally no history template JSON.
-- `tests/`: complete Group Review and Major Test records.
-- `templates/`: schemas/templates only. They define structure and are not the learner's current data.
-- `script/`: maintenance utilities such as repository reset. See §19 for how and when to run them.
+- `curriculum/`: actual lesson definitions; one JSON file per learning Unit.
+- `history/`: completed Unit conversation records in Markdown.
+- `tests/`: Group Review and Major Test records.
+- `templates/`: schemas/templates only.
+- `script/`: maintenance utilities such as repository reset.
 
-## 3. Template rule
-Every actual JSON file must conform to its corresponding template. Do not casually add, remove, rename, or repurpose properties. If the data model must change, update the template and increment `schema_version` first, then migrate affected data.
+## 3. Schema and migration rule
+Every actual JSON file must conform to its corresponding template. Do not casually add, remove, rename, or repurpose properties. If the data model changes, update the template and increment its `schema_version`, then migrate affected data before continuing.
 
-> Known naming inconsistency to resolve in a future schema bump: `vocabulary_mastery` uses `encountered` while the structurally equivalent field in `grammar_mastery` is called `introduced`. Do not silently rename either field; if this is fixed, bump `schema_version` in `templates/Study English Memory.json` and migrate `data/Study English Memory.json` per this rule.
+Central-state schema `1.1` changes:
+- Remove `current_position.status`; lifecycle status is redundant because current position, last completed Unit, history and next Unit provide the necessary state.
+- Rename `vocabulary_mastery.encountered` to `vocabulary_mastery.introduced` so vocabulary and grammar use the same concept/field name.
 
-## 4. `Study English Memory.json`
-### `schema_version`
-Schema version of the central state file. System-managed; change only with a template/schema change.
-### `profile`
-Stable learning preferences and long-term target.
-- `target`: target examination or outcome.
-- `target_timeframe_years`: approximate target horizon.
-- `english_variant`: preferred language variety.
-- `learning_language`: language being learned.
-- `explanation_language`: language used for explanations.
-### `current_level`
-Current estimated learning level. Updated only after diagnostic or formal assessment justifies a change.
-### `current_position`
-Where the learner is now.
-- `group`: current curriculum group number.
-- `unit`: current learning Unit number.
-- `unit_type`: `learning`, `group_review`, or `major_test` as applicable.
-- `status`: current lifecycle state, normally `not_started`, `in_progress`, or `completed`.
-- `last_completed_unit`: latest completed Unit ID or null.
-- `next_unit`: next scheduled Unit/test ID.
-### `progress`
-Compact cumulative counters. Detailed history belongs in `history/` and `tests/`.
-### `vocabulary_mastery`
-Aggregate vocabulary statistics derived from `data/Vocabulary Index.json`.
-- `encountered`: unique encountered words.
-- `active`: words currently expected for active use.
-- `mastered`: words meeting mastery criteria.
-- `needs_review`: words requiring review.
-- `average_score`: aggregate mastery score.
-### `grammar_mastery`
-Aggregate grammar statistics derived from `data/Grammar Index.json`.
-- `introduced`: unique grammar topics introduced (equivalent role to `vocabulary_mastery.encountered`; see naming note in §3).
-- `active`: topics currently expected for active use.
-- `mastered`: topics meeting mastery criteria.
-- `needs_review`: topics requiring review.
-- `average_score`: aggregate mastery score.
-### `skills`
-Current 0–5 estimates for grammar, vocabulary, reading, writing, listening, speaking, and output.
-### `assessment`
-Latest assessment summary. Full assessment records remain in `tests/`.
-### `learning_focus`
-Current adaptive focus: grammar topics, vocabulary and recurring errors needing attention.
-### `system`
-System lifecycle metadata.
-- `initialized`: whether repository initialization has completed.
-- `last_updated`: last state update date/time.
-- `last_session`: last learning session date/time.
+## 4. Central state rules
+`data/Study English Memory.json` contains compact execution state only.
+- `current_position` contains `group`, `unit`, `unit_type`, `last_completed_unit`, and `next_unit` only.
+- `vocabulary_mastery` and `grammar_mastery` are derived summaries, never independently authored estimates.
+- `introduced`: number of unique records in the corresponding index.
+- `active`: number of records whose index `status` is `active`.
+- `mastered`: number of records whose index `status` is `mastered`.
+- `needs_review`: number of records whose index `status` is `needs_review`.
+- `average_score`: arithmetic mean of `mastery.overall` across all index records, divided by 5 and rounded to two decimals. If there are no records, use 0.
+- Never infer `mastered` from a score alone. A record with `mastery.overall = 5` remains `active` unless its index `status` is explicitly changed to `mastered` by the mastery rules.
+- Before every state update, recompute all aggregate fields directly from the indexes.
 
-## 5. `Curriculum Memory.json`
-This is the curriculum map, not lesson content.
-- `curriculum.id`: stable curriculum identifier.
-- `version`: curriculum version.
-- `title`: human-readable name.
-- `rules.learning_units_per_group`: number of learning Units in each Group.
-- `rules.group_review_after_units`: review cadence.
-- `rules.major_test_after_groups`: major-test cadence.
-- `levels`: ordered proficiency levels.
-- Each level contains Groups; each Group lists Unit IDs and its review ID.
+## 5. Vocabulary Index
+One record per vocabulary item. Use `word`, `first_unit`, `units`, `status`, `mastery`, encounter/review counts, collocations, common errors and last review date.
+- Recognition, meaning and usage are separate dimensions.
+- A recognised word is not automatically mastered.
+- Existing items are review/reinforcement, not new vocabulary, unless a legitimate new sense/use is introduced.
 
-The curriculum numbering is stable. A weak result must increase reinforcement; it must not silently renumber or replace existing Units.
+## 6. Grammar Index
+One record per grammar topic with `topic`, `first_unit`, `units`, `status`, mastery dimensions, encounter/review counts, common errors and last review date.
+- Previously learned grammar must be labelled as review/reinforcement/mastery check, not falsely introduced as new.
+- Central-state `mastered` is derived strictly from index `status`, not from `mastery.overall`.
 
-## 6. `Vocabulary Index.json`
-One record per vocabulary item.
-- `word`: canonical word/lexeme.
-- `first_unit`: first Unit where it was intentionally introduced.
-- `units`: Units where it was encountered or reviewed.
-- `status`: learning state such as `active`, `mastered`, or `needs_review`.
-- `mastery.recognition`: ability to recognise the word.
-- `mastery.meaning`: ability to understand its meaning in context.
-- `mastery.usage`: ability to use it correctly.
-- `mastery.overall`: aggregate mastery.
-- `encounter_count`: total meaningful encounters.
-- `review_count`: deliberate reviews.
-- `collocations`: important natural word combinations.
-- `common_errors`: recurring learner errors.
-- `last_reviewed`: latest review date.
+## 7. Curriculum Unit rules
+Each learning Unit must define grammar, vocabulary, collocations, sentence patterns, lesson flow, practice, assessment and `next_unit` according to `templates/curriculum-unit.json`.
+- `vocabulary.core`: active target vocabulary.
+- `vocabulary.supporting`: supporting vocabulary that should appear in examples/exercises.
+- `vocabulary.review`: previously indexed vocabulary intentionally reviewed.
+- Every vocabulary item used as a deliberate target in a Unit, including meaningful words appearing in target collocations such as `watch TV`, must appear in `core`, `supporting`, or `review` and be represented in Vocabulary Index after completion.
+- Do not create a collocation containing a meaningful target word absent from all three vocabulary lists.
 
-Recognition and usage are deliberately separate. A recognised word is not automatically an active word.
+## 8. Session opening vocabulary protocol
+At the beginning of every learning Unit, after reading the Unit and indexes, explicitly show a compact vocabulary preview before teaching:
+1. Core vocabulary.
+2. New supporting vocabulary not already in the index.
+3. Review vocabulary, clearly labelled as review.
+4. Important collocations.
+5. Chinese meanings may be provided, while examples and exercises continue to use English.
+The preview is instructional: the listed words must actually appear in examples, recognition tasks, controlled practice and/or output. Do not list vocabulary that will never be used.
 
-## 7. `Grammar Index.json`
-One record per grammar topic.
-- `topic`: canonical grammar topic name.
-- `first_unit`: first intentional introduction.
-- `units`: Units where it was taught/reviewed.
-- `status`: learning state.
-- `mastery.recognition`: ability to identify the pattern.
-- `mastery.formation`: ability to form it correctly.
-- `mastery.usage`: ability to select/use it correctly in context.
-- `mastery.output`: ability to produce it independently.
-- `mastery.overall`: aggregate mastery.
-- `encounter_count`: meaningful encounters.
-- `review_count`: deliberate reviews.
-- `common_errors`: recurring errors.
-- `last_reviewed`: latest review date.
+## 9. Starting a session
+1. Read central state and validate it against its template/schema.
+2. Read the current Unit/review/test file.
+3. Read Vocabulary, Grammar and Error indexes.
+4. Display the Session Opening Vocabulary Preview defined in §8.
+5. Teach according to the Unit's `lesson_flow`.
+6. Adapt practice intensity using errors and mastery dimensions.
 
-Previously learned grammar must be labelled as review/reinforcement/mastery check, not falsely introduced as new.
+For first-time initialization, establish level through diagnostic evidence and preserve known prior learning.
 
-## 8. `Error Index.json`
-Tracks recurring errors so future practice can target them.
-- `id`: stable error ID.
-- `type`: grammar, vocabulary, collocation, spelling, etc.
-- `category`: normalised error category.
-- `incorrect`: learner production.
-- `correct`: corrected form.
-- `first_seen` / `last_seen`: Unit IDs.
-- `frequency`: number of observed occurrences.
-- `severity`: relative impact, normally low/medium/high.
-- `status`: e.g. `needs_review`, `improving`, `resolved`.
-- `related_grammar`: linked grammar topics.
-- `review_history`: Units where the error was deliberately reviewed.
-- `next_review`: planned review Unit.
-
-## 9. `curriculum-unit.json`
-Defines one actual learning Unit.
-- `unit`: identity, level, Group, number, type, title and overview.
-- `objectives`: measurable learning objectives.
-- `grammar.new`: genuinely new grammar only.
-- `grammar.review`: existing grammar intentionally reviewed.
-- `grammar.focus`: aspects receiving special attention.
-- `vocabulary.theme`: semantic theme.
-- `vocabulary.core`: active/core target words.
-- `vocabulary.supporting`: supporting vocabulary.
-- `vocabulary.review`: previously indexed words used for review.
-- `collocations`: target collocations.
-- `sentence_patterns`: reusable patterns.
-- `lesson_flow`: required instructional sequence.
-- `practice`: grammar/vocabulary/output activities.
-- `assessment`: Unit assessment definitions.
-- `completion_criteria.minimum_understanding`: minimum understanding ratio.
-- `completion_criteria.minimum_output`: minimum output ratio.
-- `next_unit`: scheduled next Unit ID.
-
-A Unit should normally move from controlled recognition to guided output, independent output, and communicative output.
-
-## 10. `test.json`
-Used for Group Reviews and Major Tests.
-- `test`: identity, type, scope and status.
-- `assessment`: category scores and overall score.
-- `analysis`: strengths, weaknesses and errors.
-- `decision.pass`: whether requirements were met.
-- `decision.next_action`: concrete next learning action.
-- `decision.recommended_level`: level recommendation based on evidence.
-
-Full test records stay in `tests/`. `Study English Memory.json` keeps only the latest/current summary needed for execution.
-
-## 11. Vocabulary architecture
-Each learning Unit should normally expose roughly 30–50 useful words through a mixture of:
-- 15–20 active/core targets;
-- 10–20 supporting words;
-- 10–20 exposure/review words;
-- about 5–10 important collocations.
-
-Exact counts may vary according to the Unit. Do not force artificial vocabulary volume.
-
-## 12. Deduplication
-Before adding new vocabulary or grammar:
-1. Read the relevant index.
-2. If the item already exists, treat it as review/reinforcement/exposure unless there is a legitimate new sense or substantially new grammatical use.
-3. Update the existing index record rather than creating a duplicate.
-4. Do not mark an item as mastered merely because it was recognised.
-
-## 13. Adaptive learning
-Use `Error Index.json`, vocabulary usage scores and grammar output scores to choose practice intensity. A weak test does not rewrite the curriculum; it increases targeted reinforcement within the stable curriculum.
-
-## 14. Starting a session
-1. Read `data/Study English Memory.json`. If this file is missing (e.g. after a reset, see §19), do not fabricate state — stop and reinitialize `data/` from `templates/` first, then re-read.
-2. Validate that required properties exist and match the template.
-3. Read the current `curriculum/unit-XXX.json` or current review/test file.
-4. Read the relevant vocabulary, grammar and error indexes.
-5. Teach the current Unit according to its flow.
-
-For first-time initialization, establish the learner's level through diagnostic evidence before treating a level as final. Preserve known historical learning as prior knowledge.
-
-## 15. Unit completion and history rule
-The AI may decide that the Unit has met its completion criteria, but it must ask the user whether they want to end the Unit. Do not write `history/unit-XXX.md` before explicit user confirmation such as `结束`, `完成`, or equivalent confirmation.
+## 10. Unit completion and next-Unit generation
+The AI may determine that completion criteria are met, but must ask the user whether they want to end the Unit. Do not write history before explicit confirmation such as `结束` or `完成`.
 
 After confirmation:
-1. Write the actual AI-user Unit conversation to `history/unit-XXX.md`.
-2. Append a concise final assessment/error section if useful, while preserving the dialogue itself as the primary record.
-3. Update the central state and all relevant indexes.
+1. Write `history/unit-XXX.md` with enough detail to reconstruct the learner interaction, exercises, answers, corrections and assessment.
+2. Update Vocabulary/Grammar/Error indexes.
+3. Recompute central-state aggregate statistics directly from the indexes.
 4. Update progress and current position.
-5. Apply Group Review or Major Test scheduling rules when the milestone is reached.
-6. Design/save the next Unit when appropriate.
+5. Apply Group Review/Major Test scheduling rules.
+6. **Create/save the next scheduled learning Unit JSON immediately after a learning Unit is completed**, unless the next scheduled item is a review/test file that already exists. This is mandatory, not optional planning.
+7. Validate all changed JSON and cross-file references before finishing.
 
-## 16. History format
-`history/` has no JSON template. Each file is Markdown and is named exactly `unit-XXX.md`. It records the actual conversation for that Unit, not merely a summary. It should contain enough detail to reconstruct exercises, learner answers, corrections and assessment.
+The next Unit must be defined even though it has not yet been taught. Creating it does not start the Unit or advance the learner into it.
 
-## 17. Review cadence
+## 11. History
+`history/unit-XXX.md` is Markdown and should preserve the actual conversation as the primary record, with a concise assessment/error section if useful.
+
+## 12. Vocabulary architecture
+A learning Unit normally exposes roughly 30–50 useful items through core, supporting and review vocabulary plus about 5–10 important collocations. Exact counts may vary; do not force artificial volume.
+
+## 13. Adaptive learning
+Use Error Index, vocabulary usage scores and grammar output scores to choose reinforcement. Weak results increase targeted reinforcement; they do not silently renumber or replace curriculum Units.
+
+## 14. Review cadence
 - Four learning Units form one Group.
-- After Unit 4, 8, 12, etc., run the corresponding Group Review.
+- After Units 4, 8, 12, etc., run the corresponding Group Review.
 - After four Groups / twenty learning Units, run a Major Test.
-- Reviews diagnose weak areas and feed the Error Index and mastery indexes.
 
-## 18. Maintenance and validation
-Do not edit files outside their defined role. Keep `data/Study English Memory.json` compact. Do not store full conversation history, full vocabulary lists, or full test details in the central state file.
+## 15. Validation checklist
+Before committing any lesson-state change, validate:
+- JSON syntax is valid.
+- `schema_version` matches its template.
+- Central-state `introduced/active/mastered/needs_review/average_score` values exactly match index data.
+- `mastered` counts come only from index `status == mastered`.
+- `current_position` has no `status` property.
+- Unit IDs and `next_unit` references exist and agree with the curriculum map.
+- Every deliberate target vocabulary item is represented in the Unit vocabulary lists and Vocabulary Index.
+- No duplicate vocabulary/grammar records.
+- History is not written before explicit completion confirmation.
+- Review/test scheduling matches curriculum rules.
 
-Before committing updates, validate:
-- JSON is syntactically valid.
-- `schema_version` exists and matches its template.
-- IDs and Unit references are consistent.
-- Vocabulary/grammar duplicates are merged.
-- History is not written early.
-- Current position agrees with progress.
-- Review/test scheduling agrees with curriculum rules.
-
-## 19. Repository reset (`script/ini.py`)
-`script/ini.py` is a **destructive, human-run** utility, not something the AI invokes automatically. It:
-- Deletes everything under `data/`, `curriculum/`, `history/`, and `tests/`.
-- Preserves `templates/`, `script/`, and `SKILL.md` only.
-- Requires the operator to type `RESET` at the prompt; anything else cancels.
-
-**It does not repopulate `data/` afterward.** After a reset, `data/`, `curriculum/`, `history/`, and `tests/` are simply empty/missing. Before starting a new session (§14), reinitialize the required files by copying the initial-state templates back into `data/`:
-- `templates/Study English Memory.json` → `data/Study English Memory.json`
-- `templates/Curriculum Memory.json` → `data/Curriculum Memory.json`
-- `templates/Vocabulary Index.json` (with `words` emptied to `[]`) → `data/Vocabulary Index.json`
-- `templates/Grammar Index.json` (with `grammar` emptied to `[]`) → `data/Grammar Index.json`
-- `templates/Error Index.json` (with `errors` emptied to `[]`) → `data/Error Index.json`
-
-Then create the first `curriculum/unit-001.json` from `templates/curriculum-unit.json` before teaching begins.
+## 16. Repository reset (`script/ini.py`)
+`script/ini.py` is destructive and human-run. The AI must not invoke it automatically. It deletes `data/`, `curriculum/`, `history/`, and `tests/`, preserves `templates/`, `script/`, and `SKILL.md`, and requires the operator to type `RESET`. After reset, reinitialize required data files from templates and recreate `curriculum/unit-001.json` before teaching begins.
