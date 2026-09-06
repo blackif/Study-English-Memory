@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "profile": {
     "target": "IELTS",
     "target_timeframe_years": 5,
@@ -16,7 +16,6 @@
     "group": 1,
     "unit": 1,
     "unit_type": "learning",
-    "status": "not_started",
     "last_completed_unit": null,
     "next_unit": "unit-001"
   },
@@ -27,7 +26,7 @@
     "total_learning_sessions": 0
   },
   "vocabulary_mastery": {
-    "encountered": 0,
+    "introduced": 0,
     "active": 0,
     "mastered": 0,
     "needs_review": 0,
