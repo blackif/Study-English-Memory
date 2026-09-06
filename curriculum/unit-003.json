@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "unit": {
+    "id": "unit-003",
+    "level": "level-1",
+    "group": 1,
+    "number": 3,
+    "type": "learning",
+    "title": "Present Simple: Yes/No Questions with Do and Does",
+    "overview": "Build on affirmative and negative present-simple sentences by learning how to ask and answer basic yes/no questions with do and does."
+  },
+  "objectives": [
+    "Understand the role of do and does in present-simple yes/no questions.",
+    "Form questions with Do/Does + subject + base verb.",
+    "Give short positive and negative answers accurately.",
+    "Use everyday routine vocabulary to ask and answer simple questions."
+  ],
+  "grammar": {
+    "new": ["Present Simple yes/no questions", "Short answers with do/does"],
+    "review": ["Present Simple affirmative", "Present Simple negative", "Do/does as present-simple auxiliary verbs"],
+    "focus": [
+      "Do + I/you/we/they + base verb ...?",
+      "Does + he/she/it + base verb ...?",
+      "Yes, I/you/we/they do. / No, I/you/we/they don't.",
+      "Yes, he/she/it does. / No, he/she/it doesn't.",
+      "Keep the main verb in the base form after do/does"
+    ]
+  },
+  "vocabulary": {
+    "theme": "Daily routines and everyday activities",
+    "core": ["get", "start", "finish", "visit", "call", "use", "buy", "meet"],
+    "supporting": ["morning", "afternoon", "night", "job", "phone", "shop", "weekend", "often"],
+    "review": ["work", "study", "live", "play", "eat", "drink", "read", "go", "home", "school", "food", "water", "music", "book", "TV", "every day", "watch", "like", "wake", "have", "cook", "walk", "need", "want", "help", "sleep", "breakfast", "dinner", "house", "friend", "today", "usually"]
+  },
+  "collocations": ["get up", "start work", "finish work", "call a friend", "use a phone", "go shopping"],
+  "sentence_patterns": [
+    "Do I/you/we/they + base verb ...?",
+    "Does he/she + base verb ...?",
+    "Yes, I/you/we/they do.",
+    "No, I/you/we/they don't.",
+    "Yes, he/she does.",
+    "No, he/she doesn't."
+  ],
+  "lesson_flow": ["introduction", "explanation", "recognition", "controlled_practice", "guided_output", "independent_output", "assessment"],
+  "practice": {
+    "grammar": [
+      "Identify do/does, subject, and main verb in questions.",
+      "Choose Do or Does for different subjects.",
+      "Correct questions that incorrectly use a third-person -s after does.",
+      "Transform affirmative statements into yes/no questions.",
+      "Match questions with correct short answers."
+    ],
+    "vocabulary": [
+      "Match everyday activity words with meanings.",
+      "Use core vocabulary in simple questions and answers.",
+      "Review Unit 1 and Unit 2 vocabulary in questions."
+    ],
+    "output": [
+      "Ask five simple yes/no questions about daily routines.",
+      "Answer routine questions using accurate short answers and complete sentences."
+    ]
+  },
+  "assessment": {
+    "grammar": ["At least 8/10 correct on Do/Does question formation and short answers."],
+    "vocabulary": ["Correctly use at least 7 Unit 3 target/review words in context."],
+    "output": ["Produce at least 5 understandable present-simple yes/no questions and answers independently."]
+  },
+  "completion_criteria": {"minimum_understanding": 0.7, "minimum_output": 0.6},
+  "next_unit": "unit-004"
+}
