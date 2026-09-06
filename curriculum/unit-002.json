@@ -16,14 +16,8 @@
     "Use everyday routine vocabulary to produce accurate negative sentences."
   ],
   "grammar": {
-    "new": [
-      "Present Simple negative",
-      "Do/does as present-simple auxiliary verbs"
-    ],
-    "review": [
-      "Basic sentence structure: Subject + Verb",
-      "Present Simple affirmative"
-    ],
+    "new": ["Present Simple negative", "Do/does as present-simple auxiliary verbs"],
+    "review": ["Basic sentence structure: Subject + Verb", "Present Simple affirmative"],
     "focus": [
       "I/You/We/They + don't + base verb",
       "He/She + doesn't + base verb",
@@ -32,33 +26,18 @@
   },
   "vocabulary": {
     "theme": "Daily routines and preferences",
-    "core": ["wake", "have", "cook", "walk", "need", "want", "help", "sleep", "watch", "like"],
+    "core": ["wake", "have", "cook", "walk", "need", "want", "help", "sleep"],
     "supporting": ["morning", "evening", "breakfast", "dinner", "house", "friend", "today", "usually"],
-    "review": ["work", "study", "live", "play", "eat", "drink", "read", "go", "home", "school", "food", "water", "music", "book", "TV", "every day"]
+    "review": ["work", "study", "live", "play", "eat", "drink", "read", "go", "home", "school", "food", "water", "music", "book", "TV", "every day", "watch", "like"]
   },
-  "collocations": [
-    "wake up",
-    "have breakfast",
-    "cook dinner",
-    "go home",
-    "watch TV",
-    "help a friend"
-  ],
+  "collocations": ["wake up", "have breakfast", "cook dinner", "go home", "watch TV", "help a friend"],
   "sentence_patterns": [
     "I/You/We/They don't + base verb ...",
     "He/She doesn't + base verb ...",
     "I don't + verb ... because ...",
     "He doesn't + verb ... every day."
   ],
-  "lesson_flow": [
-    "introduction",
-    "explanation",
-    "recognition",
-    "controlled_practice",
-    "guided_output",
-    "independent_output",
-    "assessment"
-  ],
+  "lesson_flow": ["introduction", "explanation", "recognition", "controlled_practice", "guided_output", "independent_output", "assessment"],
   "practice": {
     "grammar": [
       "Identify do/does and the main verb in negative sentences.",
@@ -77,19 +56,10 @@
     ]
   },
   "assessment": {
-    "grammar": [
-      "At least 8/10 correct on do/does selection and negative formation."
-    ],
-    "vocabulary": [
-      "Correctly use at least 7 Unit 2 target/review words in context."
-    ],
-    "output": [
-      "Produce at least 5 understandable present-simple negative sentences independently."
-    ]
+    "grammar": ["At least 8/10 correct on do/does selection and negative formation."],
+    "vocabulary": ["Correctly use at least 7 Unit 2 target/review words in context."],
+    "output": ["Produce at least 5 understandable present-simple negative sentences independently."]
   },
-  "completion_criteria": {
-    "minimum_understanding": 0.7,
-    "minimum_output": 0.6
-  },
+  "completion_criteria": {"minimum_understanding": 0.7, "minimum_output": 0.6},
   "next_unit": "unit-003"
 }
