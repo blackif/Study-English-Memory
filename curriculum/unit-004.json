@@ -34,7 +34,7 @@
     "theme": "Daily routines and basic personal information",
     "core": ["where", "when", "why", "who", "what", "usually", "sometimes", "before", "after", "because"],
     "supporting": ["early", "late", "weekday", "Saturday", "Sunday", "place", "time", "home", "work", "English"],
-    "review": ["get", "start", "finish", "visit", "call", "use", "buy", "meet", "work", "study", "live", "go", "watch", "TV", "friend", "morning", "night", "weekend", "often", "every day"]
+    "review": ["get", "start", "finish", "visit", "call", "use", "buy", "meet", "work", "study", "live", "go", "watch", "TV", "friend", "morning", "night", "weekend", "often", "every day", "Tokyo"]
   },
   "collocations": ["live in Tokyo", "start work", "finish work", "call a friend", "go home", "study English"],
   "sentence_patterns": [
