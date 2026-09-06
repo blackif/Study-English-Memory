@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "test": {
+    "id": "group-001-review",
+    "type": "group_review",
+    "level": "level-1",
+    "group": 1,
+    "scope": {
+      "from_unit": "unit-001",
+      "to_unit": "unit-004"
+    },
+    "status": "not_started"
+  },
+  "assessment": {
+    "grammar": {"score": 0, "max_score": 100},
+    "vocabulary": {"score": 0, "max_score": 100},
+    "reading": {"score": 0, "max_score": 100},
+    "writing": {"score": 0, "max_score": 100},
+    "output": {"score": 0, "max_score": 100},
+    "overall": 0
+  },
+  "analysis": {
+    "strong_areas": [],
+    "weak_areas": [],
+    "errors": []
+  },
+  "decision": {
+    "pass": false,
+    "next_action": "",
+    "recommended_level": "level-1"
+  }
+}
