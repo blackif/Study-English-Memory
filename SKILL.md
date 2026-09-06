@@ -1,7 +1,12 @@
+---
+name: study-english-memory
+description: Execution layer for the user's personal, long-term, curriculum-based English learning program. Tracks current level, unit progress, vocabulary/grammar mastery and recurring errors as JSON state across sessions in data/, curriculum/, history/, tests/. Use this skill whenever the user wants to continue or start an English lesson/Unit (e.g. "继续学英语", "开始今天的英语课", "unit 001"), asks about their vocabulary/grammar mastery, error history, or progress, wants a Group Review or Major Test, wants to end/close the current Unit, or wants to reset/reinitialize their English learning data. Also use this skill any time a task needs to read or update files under data/, curriculum/, history/, tests/, templates/, or script/ in this repository.
+---
+
 # Study English Memory Skill
 
 ## 1. Purpose
-This Skill is the execution layer for the user's long-term English learning system. 
+This Skill is the execution layer for the user's long-term English learning system.
 
 ## 2. Source of truth and directory roles
 - `SKILL.md`: execution rules. It must not contain current learner state.
@@ -10,10 +15,12 @@ This Skill is the execution layer for the user's long-term English learning syst
 - `history/`: actual AI-user conversation records for completed Units, stored as Markdown. There is intentionally no history template JSON.
 - `tests/`: complete Group Review and Major Test records.
 - `templates/`: schemas/templates only. They define structure and are not the learner's current data.
-- `script/`: maintenance utilities such as repository reset.
+- `script/`: maintenance utilities such as repository reset. See §19 for how and when to run them.
 
 ## 3. Template rule
 Every actual JSON file must conform to its corresponding template. Do not casually add, remove, rename, or repurpose properties. If the data model must change, update the template and increment `schema_version` first, then migrate affected data.
+
+> Known naming inconsistency to resolve in a future schema bump: `vocabulary_mastery` uses `encountered` while the structurally equivalent field in `grammar_mastery` is called `introduced`. Do not silently rename either field; if this is fixed, bump `schema_version` in `templates/Study English Memory.json` and migrate `data/Study English Memory.json` per this rule.
 
 ## 4. `Study English Memory.json`
 ### `schema_version`
@@ -46,6 +53,11 @@ Aggregate vocabulary statistics derived from `data/Vocabulary Index.json`.
 - `average_score`: aggregate mastery score.
 ### `grammar_mastery`
 Aggregate grammar statistics derived from `data/Grammar Index.json`.
+- `introduced`: unique grammar topics introduced (equivalent role to `vocabulary_mastery.encountered`; see naming note in §3).
+- `active`: topics currently expected for active use.
+- `mastered`: topics meeting mastery criteria.
+- `needs_review`: topics requiring review.
+- `average_score`: aggregate mastery score.
 ### `skills`
 Current 0–5 estimates for grammar, vocabulary, reading, writing, listening, speaking, and output.
 ### `assessment`
@@ -175,7 +187,7 @@ Before adding new vocabulary or grammar:
 Use `Error Index.json`, vocabulary usage scores and grammar output scores to choose practice intensity. A weak test does not rewrite the curriculum; it increases targeted reinforcement within the stable curriculum.
 
 ## 14. Starting a session
-1. Read `data/Study English Memory.json`.
+1. Read `data/Study English Memory.json`. If this file is missing (e.g. after a reset, see §19), do not fabricate state — stop and reinitialize `data/` from `templates/` first, then re-read.
 2. Validate that required properties exist and match the template.
 3. Read the current `curriculum/unit-XXX.json` or current review/test file.
 4. Read the relevant vocabulary, grammar and error indexes.
@@ -214,3 +226,18 @@ Before committing updates, validate:
 - History is not written early.
 - Current position agrees with progress.
 - Review/test scheduling agrees with curriculum rules.
+
+## 19. Repository reset (`script/ini.py`)
+`script/ini.py` is a **destructive, human-run** utility, not something the AI invokes automatically. It:
+- Deletes everything under `data/`, `curriculum/`, `history/`, and `tests/`.
+- Preserves `templates/`, `script/`, and `SKILL.md` only.
+- Requires the operator to type `RESET` at the prompt; anything else cancels.
+
+**It does not repopulate `data/` afterward.** After a reset, `data/`, `curriculum/`, `history/`, and `tests/` are simply empty/missing. Before starting a new session (§14), reinitialize the required files by copying the initial-state templates back into `data/`:
+- `templates/Study English Memory.json` → `data/Study English Memory.json`
+- `templates/Curriculum Memory.json` → `data/Curriculum Memory.json`
+- `templates/Vocabulary Index.json` (with `words` emptied to `[]`) → `data/Vocabulary Index.json`
+- `templates/Grammar Index.json` (with `grammar` emptied to `[]`) → `data/Grammar Index.json`
+- `templates/Error Index.json` (with `errors` emptied to `[]`) → `data/Error Index.json`
+
+Then create the first `curriculum/unit-001.json` from `templates/curriculum-unit.json` before teaching begins.
