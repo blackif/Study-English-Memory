@@ -1,0 +1,84 @@
+{
+  "schema_version":"1.0",
+  "id":"unit-004",
+  "level":"level-1",
+  "group":1,
+  "number":4,
+  "type":"learning",
+  "title":"Present Simple: Wh- Questions and Information Questions",
+  "overview":"Extend present-simple questions from yes/no questions to basic Wh- questions, using familiar daily-routine vocabulary and reinforcing Do/Does, base verbs, subject matching, and live in + place.",
+  "objectives":[
+    "Understand the structure of basic present-simple Wh- questions.",
+    "Form What/Where/When/Why/Who questions with do/does when required.",
+    "Keep the main verb in the base form after do/does.",
+    "Answer basic information questions with short, clear sentences.",
+    "Reinforce the Unit 3 errors and spelling items scheduled for review."
+  ],
+  "grammar":{
+    "new":["Present Simple Wh- questions","Wh- question word meaning and selection"],
+    "review":["Present Simple yes/no questions","Short answers with do/does","Present Simple affirmative","Present Simple negative","Do/does as present-simple auxiliary verbs"]
+  },
+  "grammar_focus":[
+    "What do you do every day?",
+    "Where do you live?",
+    "When does she start work?",
+    "Why does he study English?",
+    "Who do they visit?",
+    "Use do with I/you/we/they and does with he/she/it when the question requires an auxiliary.",
+    "Keep the main verb in base form after do/does.",
+    "Use live in + city/country/place."
+  ],
+  "vocabulary":{
+    "theme":"Daily routines and basic personal information",
+    "core":["where","when","why","who","what","usually","sometimes","before","after","because"],
+    "supporting":["early","late","weekday","Saturday","Sunday","place","time","home","work","English"],
+    "review":["get","start","finish","visit","call","use","buy","meet","work","study","live","go","watch","TV","friend","morning","night","weekend","often","every day"],
+    "collocations":["live in Tokyo","start work","finish work","call a friend","go home","study English"]
+  },
+  "lesson_flow":[
+    "introduction",
+    "explanation",
+    "recognition",
+    "controlled_practice",
+    "guided_output",
+    "independent_output",
+    "assessment"
+  ],
+  "practice_grammar":[
+    "Identify Wh- question words and their meanings.",
+    "Choose Do/Does in Wh- questions.",
+    "Correct questions that incorrectly keep third-person -s after does.",
+    "Correct subject mismatches.",
+    "Correct missing in in live in + place.",
+    "Answer Wh- questions using complete, understandable sentences."
+  ],
+  "practice_vocabulary":[
+    "Use the new Wh- words in realistic daily-routine questions.",
+    "Use Unit 3 vocabulary in answers and short dialogues.",
+    "Reinforce the spelling of work and They and the capitalisation of TV."
+  ],
+  "output_requirements":[
+    "Write at least five present-simple Wh- questions.",
+    "Answer at least five Wh- questions in complete sentences.",
+    "Use at least seven Unit 4 target/review vocabulary items in context.",
+    "Include at least one Where question using live in + place.",
+    "Include at least one When or Why question with does + base verb."
+  ],
+  "assessment":{
+    "criteria":[
+      "At least 8/10 Wh- question formation items correct.",
+      "At least 8/10 Do/Does selections correct.",
+      "No unresolved subject mismatch in targeted review items.",
+      "Correct live in + place usage.",
+      "At least five understandable Wh- questions and answers.",
+      "Review spelling items are explicitly checked."
+    ],
+    "minimum_understanding":0.7,
+    "minimum_output":0.6
+  },
+  "completion_criteria":{
+    "understanding":0.7,
+    "output":0.6
+  },
+  "next_unit":"group-001-review"
+}
