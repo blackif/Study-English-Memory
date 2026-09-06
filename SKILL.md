@@ -1,7 +1,7 @@
 # Study English Memory Skill
 
 ## 1. Purpose
-This Skill is the execution layer for the user's long-term English learning system. GitHub is the durable source of truth. ChatGPT conducts lessons, evaluates performance, and updates the repository only according to the rules below.
+This Skill is the execution layer for the user's long-term English learning system. 
 
 ## 2. Source of truth and directory roles
 - `SKILL.md`: execution rules. It must not contain current learner state.
