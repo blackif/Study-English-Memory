@@ -4,10 +4,10 @@
     {
       "topic":"Basic sentence structure: Subject + Verb",
       "first_unit":"unit-001",
-      "units":["unit-001"],
+      "units":["unit-001","unit-002"],
       "status":"active",
       "mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},
-      "encounter_count":3,
+      "encounter_count":4,
       "review_count":0,
       "common_errors":[],
       "last_reviewed":"2026-09-06"
@@ -15,10 +15,32 @@
     {
       "topic":"Present Simple affirmative",
       "first_unit":"unit-001",
-      "units":["unit-001"],
+      "units":["unit-001","unit-002"],
       "status":"active",
       "mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},
-      "encounter_count":5,
+      "encounter_count":6,
+      "review_count":0,
+      "common_errors":[],
+      "last_reviewed":"2026-09-06"
+    },
+    {
+      "topic":"Present Simple negative",
+      "first_unit":"unit-002",
+      "units":["unit-002"],
+      "status":"active",
+      "mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},
+      "encounter_count":8,
+      "review_count":0,
+      "common_errors":["doesn't + base verb"],
+      "last_reviewed":"2026-09-06"
+    },
+    {
+      "topic":"Do/does as present-simple auxiliary verbs",
+      "first_unit":"unit-002",
+      "units":["unit-002"],
+      "status":"active",
+      "mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},
+      "encounter_count":8,
       "review_count":0,
       "common_errors":[],
       "last_reviewed":"2026-09-06"
