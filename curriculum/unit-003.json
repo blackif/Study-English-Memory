@@ -13,7 +13,8 @@
     "Understand the role of do and does in present-simple yes/no questions.",
     "Form questions with Do/Does + subject + base verb.",
     "Give short positive and negative answers accurately.",
-    "Use everyday routine vocabulary to ask and answer simple questions."
+    "Use everyday routine vocabulary to ask and answer simple questions.",
+    "Reinforce subject-verb matching and the preposition in live in + city through targeted practice."
   ],
   "grammar": {
     "new": ["Present Simple yes/no questions", "Short answers with do/does"],
@@ -23,7 +24,9 @@
       "Does + he/she/it + base verb ...?",
       "Yes, I/you/we/they do. / No, I/you/we/they don't.",
       "Yes, he/she/it does. / No, he/she/it doesn't.",
-      "Keep the main verb in the base form after do/does"
+      "Keep the main verb in the base form after do/does",
+      "Match the subject and pronoun correctly when forming and answering sentences",
+      "Use live in + city/country correctly: live in Tokyo, live in New Zealand"
     ]
   },
   "vocabulary": {
@@ -48,20 +51,24 @@
       "Choose Do or Does for different subjects.",
       "Correct questions that incorrectly use a third-person -s after does.",
       "Transform affirmative statements into yes/no questions.",
-      "Match questions with correct short answers."
+      "Match questions with correct short answers.",
+      "Targeted subject-matching drill: choose the correct subject/pronoun for the intended action and correct mismatches such as He doesn't go home when the intended subject is She.",
+      "Targeted preposition drill: complete and produce sentences using live in + city/country, including correction of errors such as live Tokyo -> live in Tokyo."
     ],
     "vocabulary": [
       "Match everyday activity words with meanings.",
       "Use core vocabulary in simple questions and answers.",
-      "Review Unit 1 and Unit 2 vocabulary in questions."
+      "Review Unit 1 and Unit 2 vocabulary in questions.",
+      "Use live in + city/country in questions and answers so the preposition is practised, not only recognised."
     ],
     "output": [
       "Ask five simple yes/no questions about daily routines.",
-      "Answer routine questions using accurate short answers and complete sentences."
+      "Answer routine questions using accurate short answers and complete sentences.",
+      "Include at least one subject-matching question/answer pair and one live in + city/country question/answer pair."
     ]
   },
   "assessment": {
-    "grammar": ["At least 8/10 correct on Do/Does question formation and short answers."],
+    "grammar": ["At least 8/10 correct on Do/Does question formation and short answers.", "No unresolved subject-matching error in the targeted reinforcement items.", "Correctly use live in + city/country in the targeted item."],
     "vocabulary": ["Correctly use at least 7 Unit 3 target/review words in context."],
     "output": ["Produce at least 5 understandable present-simple yes/no questions and answers independently."]
   },
