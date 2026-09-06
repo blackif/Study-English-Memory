@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "unit": {
+    "id": "unit-001",
+    "level": "level-1",
+    "group": 1,
+    "number": 1,
+    "type": "learning",
+    "title": "",
+    "overview": ""
+  },
+  "objectives": [],
+  "grammar": {
+    "new": [],
+    "review": [],
+    "focus": []
+  },
+  "vocabulary": {
+    "theme": "",
+    "core": [],
+    "supporting": [],
+    "review": []
+  },
+  "collocations": [],
+  "sentence_patterns": [],
+  "lesson_flow": [
+    "introduction",
+    "explanation",
+    "recognition",
+    "controlled_practice",
+    "guided_output",
+    "independent_output",
+    "assessment"
+  ],
+  "practice": {
+    "grammar": [],
+    "vocabulary": [],
+    "output": []
+  },
+  "assessment": {
+    "grammar": [],
+    "vocabulary": [],
+    "output": []
+  },
+  "completion_criteria": {
+    "minimum_understanding": 0.7,
+    "minimum_output": 0.6
+  },
+  "next_unit": "unit-002"
+}
