@@ -16,25 +16,25 @@
     "group": 1,
     "unit": 2,
     "unit_type": "learning",
-    "last_completed_unit": "unit-001",
-    "next_unit": "unit-002"
+    "last_completed_unit": "unit-002",
+    "next_unit": "unit-003"
   },
   "progress": {
-    "completed_units": 1,
+    "completed_units": 2,
     "completed_group_reviews": 0,
     "completed_major_tests": 0,
-    "total_learning_sessions": 1
+    "total_learning_sessions": 2
   },
   "vocabulary_mastery": {
-    "introduced": 21,
-    "active": 21,
+    "introduced": 37,
+    "active": 37,
     "mastered": 0,
     "needs_review": 0,
-    "average_score": 0.98
+    "average_score": 0.9784
   },
   "grammar_mastery": {
-    "introduced": 2,
-    "active": 2,
+    "introduced": 4,
+    "active": 4,
     "mastered": 0,
     "needs_review": 0,
     "average_score": 1.0
@@ -53,18 +53,18 @@
     "latest_group_review": null,
     "latest_major_test": null,
     "weak_areas": ["listening", "speaking"],
-    "strong_areas": ["subject and verb identification", "present simple formation", "affirmative sentence output"]
+    "strong_areas": ["subject and verb identification", "present simple formation", "present simple negatives", "do/does auxiliary use", "affirmative sentence output"]
   },
   "learning_focus": {
     "grammar": [],
     "vocabulary": [],
-    "errors": []
+    "errors": ["live in + city", "doesn't + base verb", "TV capitalisation"]
   },
   "system": {
     "initialized": true,
     "last_updated": "2026-09-06T16:30:00+09:00",
     "last_session": {
-      "unit": "unit-001",
+      "unit": "unit-002",
       "date": "2026-09-06",
       "result": "completed",
       "score": 0.95
