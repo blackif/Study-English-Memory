@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "grammar": [
+    {
+      "topic": "Present Simple",
+      "first_unit": "unit-001",
+      "units": ["unit-001", "unit-003"],
+      "status": "active",
+      "mastery": {
+        "recognition": 5,
+        "formation": 4,
+        "usage": 3,
+        "output": 2,
+        "overall": 3
+      },
+      "encounter_count": 5,
+      "review_count": 3,
+      "common_errors": ["third person singular"],
+      "last_reviewed": "2026-09-06"
+    }
+  ]
+}
