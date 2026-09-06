@@ -4,7 +4,7 @@
   "current_level":{"id":"level-1","name":"Beginner","description":"初学者"},
   "current_position":{"group":1,"unit_type":"learning","last_completed_unit":"unit-003","next_unit":"unit-004"},
   "progress":{"completed_units":3,"completed_group_reviews":0,"completed_major_tests":0,"total_learning_sessions":3},
-  "vocabulary_mastery":{"introduced":54,"active":54,"mastered":0,"needs_review":0,"average_score":0.80},
+  "vocabulary_mastery":{"introduced":54,"active":54,"mastered":0,"needs_review":0,"average_score":0.82},
   "grammar_mastery":{"introduced":6,"active":6,"mastered":0,"needs_review":0,"average_score":1.00},
   "skills":{"grammar":5,"vocabulary":5,"reading":0,"writing":5,"listening":0,"speaking":0,"output":5},
   "assessment":{"overall_score":0.90,"latest_group_review":null,"latest_major_test":null,"weak_areas":["listening","speaking"],"strong_areas":["subject and verb identification","present simple formation","present simple negatives","do/does auxiliary use","yes/no question formation","short answers","affirmative sentence output"]},
