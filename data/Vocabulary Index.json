@@ -20,6 +20,7 @@
     {"word":"water","first_unit":"unit-001","units":["unit-001"],"status":"active","mastery":{"recognition":5,"meaning":5,"usage":5,"overall":5},"encounter_count":2,"review_count":0,"collocations":[],"common_errors":[],"last_reviewed":"2026-09-06"},
     {"word":"book","first_unit":"unit-001","units":["unit-001"],"status":"active","mastery":{"recognition":5,"meaning":5,"usage":5,"overall":5},"encounter_count":2,"review_count":0,"collocations":["read a book"],"common_errors":[],"last_reviewed":"2026-09-06"},
     {"word":"Tokyo","first_unit":"unit-001","units":["unit-001"],"status":"active","mastery":{"recognition":5,"meaning":5,"usage":5,"overall":5},"encounter_count":2,"review_count":0,"collocations":["live in Tokyo"],"common_errors":[],"last_reviewed":"2026-09-06"},
-    {"word":"every day","first_unit":"unit-001","units":["unit-001"],"status":"active","mastery":{"recognition":5,"meaning":5,"usage":5,"overall":5},"encounter_count":4,"review_count":0,"collocations":[],"common_errors":[],"last_reviewed":"2026-09-06"}
+    {"word":"every day","first_unit":"unit-001","units":["unit-001"],"status":"active","mastery":{"recognition":5,"meaning":5,"usage":5,"overall":5},"encounter_count":4,"review_count":0,"collocations":[],"common_errors":[],"last_reviewed":"2026-09-06"},
+    {"word":"TV","first_unit":"unit-001","units":["unit-001"],"status":"active","mastery":{"recognition":5,"meaning":5,"usage":5,"overall":5},"encounter_count":1,"review_count":0,"collocations":["watch TV"],"common_errors":[],"last_reviewed":"2026-09-06"}
   ]
 }
