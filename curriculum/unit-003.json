@@ -32,7 +32,7 @@
   "vocabulary": {
     "theme": "Daily routines and everyday activities",
     "core": ["get", "start", "finish", "visit", "call", "use", "buy", "meet"],
-    "supporting": ["morning", "afternoon", "night", "job", "phone", "shop", "weekend", "often"],
+    "supporting": ["morning", "afternoon", "night", "job", "phone", "shop", "weekend", "often", "up", "shopping"],
     "review": ["work", "study", "live", "play", "eat", "drink", "read", "go", "home", "school", "food", "water", "music", "book", "TV", "every day", "watch", "like", "wake", "have", "cook", "walk", "need", "want", "help", "sleep", "breakfast", "dinner", "house", "friend", "today", "usually"]
   },
   "collocations": ["get up", "start work", "finish work", "call a friend", "use a phone", "go shopping"],
