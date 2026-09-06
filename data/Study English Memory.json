@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "profile": {
     "target": "IELTS",
     "target_timeframe_years": 5,
@@ -16,7 +16,6 @@
     "group": 1,
     "unit": 2,
     "unit_type": "learning",
-    "status": "not_started",
     "last_completed_unit": "unit-001",
     "next_unit": "unit-002"
   },
@@ -27,27 +26,27 @@
     "total_learning_sessions": 1
   },
   "vocabulary_mastery": {
-    "encountered": 20,
-    "active": 20,
-    "mastered": 10,
+    "introduced": 21,
+    "active": 21,
+    "mastered": 0,
     "needs_review": 0,
-    "average_score": 0.9
+    "average_score": 0.98
   },
   "grammar_mastery": {
     "introduced": 2,
     "active": 2,
-    "mastered": 2,
+    "mastered": 0,
     "needs_review": 0,
     "average_score": 1.0
   },
   "skills": {
-    "grammar": 1.0,
-    "vocabulary": 0.9,
-    "reading": 0.0,
-    "writing": 0.9,
-    "listening": 0.0,
-    "speaking": 0.0,
-    "output": 0.9
+    "grammar": 5,
+    "vocabulary": 5,
+    "reading": 0,
+    "writing": 5,
+    "listening": 0,
+    "speaking": 0,
+    "output": 5
   },
   "assessment": {
     "overall_score": 0.95,
@@ -63,7 +62,7 @@
   },
   "system": {
     "initialized": true,
-    "last_updated": "2026-09-06T16:00:00+09:00",
+    "last_updated": "2026-09-06T16:30:00+09:00",
     "last_session": {
       "unit": "unit-001",
       "date": "2026-09-06",
