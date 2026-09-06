@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "profile": {
+    "target": "IELTS",
+    "target_timeframe_years": 5,
+    "english_variant": "British English / New Zealand English",
+    "learning_language": "English",
+    "explanation_language": "Chinese"
+  },
+  "current_level": {
+    "id": "level-1",
+    "name": "Beginner",
+    "description": "初学者"
+  },
+  "current_position": {
+    "group": 1,
+    "unit": 1,
+    "unit_type": "learning",
+    "status": "not_started",
+    "last_completed_unit": null,
+    "next_unit": "unit-001"
+  },
+  "progress": {
+    "completed_units": 0,
+    "completed_group_reviews": 0,
+    "completed_major_tests": 0,
+    "total_learning_sessions": 0
+  },
+  "vocabulary_mastery": {
+    "encountered": 0,
+    "active": 0,
+    "mastered": 0,
+    "needs_review": 0,
+    "average_score": 0
+  },
+  "grammar_mastery": {
+    "introduced": 0,
+    "active": 0,
+    "mastered": 0,
+    "needs_review": 0,
+    "average_score": 0
+  },
+  "skills": {
+    "grammar": 0,
+    "vocabulary": 0,
+    "reading": 0,
+    "writing": 0,
+    "listening": 0,
+    "speaking": 0,
+    "output": 0
+  },
+  "assessment": {
+    "overall_score": 0,
+    "latest_group_review": null,
+    "latest_major_test": null,
+    "weak_areas": [],
+    "strong_areas": []
+  },
+  "learning_focus": {
+    "grammar": [],
+    "vocabulary": [],
+    "errors": []
+  },
+  "system": {
+    "initialized": true,
+    "last_updated": "2026-09-06T15:15:00+09:00",
+    "last_session": null
+  }
+}
