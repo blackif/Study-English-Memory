@@ -1,9 +1,11 @@
 {
-  "schema_version": "1.0",
-  "grammar": [
-    {"topic":"Basic sentence structure: Subject + Verb","first_unit":"unit-001","units":["unit-001","unit-002"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":4,"review_count":1,"common_errors":[],"last_reviewed":"2026-09-06"},
-    {"topic":"Present Simple affirmative","first_unit":"unit-001","units":["unit-001","unit-002"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":6,"review_count":1,"common_errors":[],"last_reviewed":"2026-09-06"},
-    {"topic":"Present Simple negative","first_unit":"unit-002","units":["unit-002"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":8,"review_count":0,"common_errors":["doesn't + base verb","subject mismatch"],"last_reviewed":"2026-09-06"},
-    {"topic":"Do/does as present-simple auxiliary verbs","first_unit":"unit-002","units":["unit-002"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":8,"review_count":0,"common_errors":[],"last_reviewed":"2026-09-06"}
+  "schema_version":"1.0",
+  "grammar":[
+    {"topic":"Basic sentence structure: Subject + Verb","first_unit":"unit-001","units":["unit-001","unit-002","unit-003"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":5,"review_count":2,"common_errors":[],"last_reviewed":"2026-09-06"},
+    {"topic":"Present Simple affirmative","first_unit":"unit-001","units":["unit-001","unit-002","unit-003"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":7,"review_count":2,"common_errors":[],"last_reviewed":"2026-09-06"},
+    {"topic":"Present Simple negative","first_unit":"unit-002","units":["unit-002","unit-003"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":10,"review_count":1,"common_errors":["doesn't + base verb","subject mismatch"],"last_reviewed":"2026-09-06"},
+    {"topic":"Do/does as present-simple auxiliary verbs","first_unit":"unit-002","units":["unit-002","unit-003"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":18,"review_count":1,"common_errors":[],"last_reviewed":"2026-09-06"},
+    {"topic":"Present Simple yes/no questions","first_unit":"unit-003","units":["unit-003"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":28,"review_count":0,"common_errors":[],"last_reviewed":"2026-09-06"},
+    {"topic":"Short answers with do/does","first_unit":"unit-003","units":["unit-003"],"status":"active","mastery":{"recognition":5,"formation":5,"usage":5,"output":5,"overall":5},"encounter_count":10,"review_count":0,"common_errors":[],"last_reviewed":"2026-09-06"}
   ]
 }
