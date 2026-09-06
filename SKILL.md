@@ -90,7 +90,7 @@ After confirmation, execute these steps in order:
 5. Update progress and current position. `current_position` must contain no `unit` or `status` property.
 6. Apply Group Review/Major Test scheduling rules.
 7. **Create/save the next scheduled learning Unit JSON immediately after a learning Unit is completed**, unless the next scheduled item is a review/test file that already exists. This is mandatory, not optional planning.
-8. Validate all changed JSON and cross-file references before finishing, including Error Index consistency and review counts.
+8. Run the full checklist in `VALIDATION.md` before finishing, and only report completion to the user once every check in it passes. This is mandatory, not a suggestion — it replaces informal self-review of Error Index consistency and review counts with an explicit, computed pass/fail per item.
 
 The next Unit must be defined even though it has not yet been taught. Creating it does not start the Unit or advance the learner into it.
 
