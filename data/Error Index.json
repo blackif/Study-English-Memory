@@ -1,4 +1,10 @@
 {
   "schema_version": "1.0",
-  "errors": []
+  "errors": [
+    {"id":"ERR-001","type":"grammar","category":"subject_mismatch","incorrect":"He doesn't go home.","correct":"She doesn't walk home.","first_seen":"unit-002","last_seen":"unit-002","frequency":1,"severity":"medium","status":"needs_review","related_grammar":["Present Simple negative"],"review_history":[],"next_review":"unit-003"},
+    {"id":"ERR-002","type":"grammar","category":"preposition","incorrect":"My friend doesn't live Tokyo.","correct":"My friend doesn't live in Tokyo.","first_seen":"unit-002","last_seen":"unit-002","frequency":1,"severity":"medium","status":"needs_review","related_grammar":["Present Simple negative"],"review_history":[],"next_review":"unit-003"},
+    {"id":"ERR-003","type":"spelling","category":"typing","incorrect":"wokr","correct":"work","first_seen":"unit-002","last_seen":"unit-002","frequency":1,"severity":"low","status":"needs_review","related_grammar":[],"review_history":[],"next_review":"unit-003"},
+    {"id":"ERR-004","type":"spelling","category":"typing","incorrect":"Tey","correct":"They","first_seen":"unit-002","last_seen":"unit-002","frequency":1,"severity":"low","status":"needs_review","related_grammar":[],"review_history":[],"next_review":"unit-003"},
+    {"id":"ERR-005","type":"spelling","category":"capitalisation","incorrect":"Tv","correct":"TV","first_seen":"unit-002","last_seen":"unit-002","frequency":1,"severity":"low","status":"needs_review","related_grammar":[],"review_history":[],"next_review":"unit-003"}
+  ]
 }
