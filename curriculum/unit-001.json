@@ -29,7 +29,7 @@
   "vocabulary": {
     "theme": "Everyday actions",
     "core": ["work", "study", "live", "like", "play", "eat", "drink", "read", "watch", "go"],
-    "supporting": ["English", "home", "school", "office", "music", "food", "water", "book", "Tokyo", "every day"],
+    "supporting": ["English", "home", "school", "office", "music", "food", "water", "book", "Tokyo", "every day", "TV"],
     "review": []
   },
   "collocations": [
@@ -63,7 +63,8 @@
     ],
     "vocabulary": [
       "Match everyday action verbs with meanings.",
-      "Use target verbs in short sentences."
+      "Use target verbs in short sentences.",
+      "Use supporting vocabulary and collocations in context."
     ],
     "output": [
       "Write five sentences about your daily activities.",
