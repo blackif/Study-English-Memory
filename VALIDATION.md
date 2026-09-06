@@ -6,18 +6,34 @@ learning Unit, Group Review, or Major Test is completed — after the
 completion steps in `SKILL.md` §10 have been drafted, and **before** telling
 the user the Unit is done or moving on to the next one.
 
-Every check below must be answered with an actual computed value or an
-explicit diff, not a general impression like "looks consistent". If any
-check fails, go back and fix the underlying file — do not report completion
-with a known failing check.
+**Run `python3 script/validate.py` first.** It has a single, deterministic,
+correct answer for §§2, 3, 4, 5, and 7 below (structure conformance,
+recomputed aggregates, the review_count invariant, Error Index field
+completeness, and the next_unit chain), plus a best-effort check for §8 when
+git history is available. Trust its output over your own arithmetic — the
+whole reason it exists is that hand-computed sums and manual key-by-key
+diffing are exactly where past executions of this skill went wrong. A
+non-zero exit code is a hard stop: fix the file it points to and re-run
+until it exits 0.
 
-Run this checklist yourself as the AI executing the skill. Show your work
-(the numbers, the diff) inline as you go, then end with the PASS/FAIL table
-in §9.
+What the script does **not** and cannot judge — §1, §6, and part of §5 below
+— still needs a human/AI read of `history/unit-XXX.md` and the curriculum
+files:
+- whether an index file *should* have changed at all this Unit (§1),
+- whether an error's severity/category classification is actually sound,
+  not just structurally well-formed (§5),
+- whether a collocation word missing from the vocabulary list (flagged by
+  the script as WARN) is a genuine gap or an acceptable word-form variant
+  like shop/shopping (§6).
+
+Every check below must be answered with an actual computed value (from the
+script) or an explicit judgement call written out in words, not a general
+impression like "looks consistent". Show your work inline as you go, then
+end with the PASS/FAIL table in §9, folding in the script's exit status.
 
 ---
 
-## 1. File-touch check
+## 1. File-touch check *(manual judgement)*
 List every file that *should* have changed for this completion, and confirm
 each one actually did:
 
@@ -42,7 +58,7 @@ If any expected file is missing from the diff, stop here and fix it before
 continuing to the next sections — the recomputation checks below are
 meaningless if the underlying index wasn't actually touched.
 
-## 2. Structural conformance check
+## 2. Structural conformance check *(automated by `script/validate.py`)*
 For every JSON file changed in this completion, compare its **top-level and
 nested key structure** against its corresponding file in `templates/`:
 
@@ -66,7 +82,7 @@ field. If the data model genuinely needs to change, stop and follow the
 `SKILL.md` §3 migration rule (bump `schema_version` in the template first)
 instead of silently diverging in one file.
 
-## 3. Recomputation check (show the arithmetic)
+## 3. Recomputation check *(automated by `script/validate.py`)*
 For `vocabulary_mastery` and `grammar_mastery` in the central state file,
 actually recompute each field from the corresponding index **after** its
 update in this completion, and compare to what was written:
@@ -83,7 +99,7 @@ Write out: "computed X, file says Y — match/mismatch" for each of the ten
 values (5 fields × 2 mastery blocks). Any mismatch is a failure, even by
 0.01 — do not round the check itself away.
 
-## 4. Review-count check
+## 4. Review-count check *(automated by `script/validate.py`)*
 For every item listed in this Unit's `vocabulary.review` or `grammar.review`
 that was actually practised in the session (not merely listed):
 
@@ -94,7 +110,7 @@ that was actually practised in the session (not merely listed):
 List every reviewed item and its before/after `review_count`. An unchanged
 `review_count` for a genuinely reviewed item is a failure.
 
-## 5. Error Index completeness check
+## 5. Error Index completeness check *(structure automated; classification soundness is manual)*
 Take every error mentioned in the "Errors" / "Errors reviewed" section of
 `history/unit-XXX.md` and classify each one as exactly one of:
 
@@ -113,14 +129,14 @@ Any error mentioned in history that doesn't fall cleanly into (a), (b), or
 (c) is a failure. This includes errors that only appear informally in
 `learning_focus.errors` without a matching Error Index entry.
 
-## 6. Vocabulary/collocation coverage check
+## 6. Vocabulary/collocation coverage check *(script WARNs candidates; final call is manual)*
 For every collocation in this Unit's `collocations` list, confirm every
 meaningful word in it appears in `vocabulary.core`, `vocabulary.supporting`,
 or `vocabulary.review` of the same Unit, and (after this completion) has a
 matching entry in `Vocabulary Index.json`. List any collocation word that
 fails this.
 
-## 7. Position/reference chain check
+## 7. Position/reference chain check *(automated by `script/validate.py`)*
 - `last_completed_unit` equals this Unit's id.
 - `next_unit` equals the correct next id per `Curriculum Memory.json`'s
   group/unit list — the next learning Unit, or the Group's review id if this
@@ -131,7 +147,7 @@ fails this.
   `next_unit` points to, and its schema-appropriate `next_unit` field points
   correctly onward.
 
-## 8. No-copy-forward / no-fabrication check
+## 8. No-copy-forward / no-fabrication check *(best-effort automation via git history; confirm manually if git is unavailable)*
 This check catches both failure directions seen in past executions:
 - If an index file was **not modified** this completion, the corresponding
   central-state aggregate numbers must be **byte-identical** to their
