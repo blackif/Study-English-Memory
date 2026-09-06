@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "unit": {
+    "id": "unit-001",
+    "level": "level-1",
+    "group": 1,
+    "number": 1,
+    "type": "learning",
+    "title": "Basic English Sentences: Subject and Verb",
+    "overview": "Build the foundation for English sentence structure by identifying subjects and verbs and forming simple present-tense statements."
+  },
+  "objectives": [
+    "Identify the subject and main verb in a basic English sentence.",
+    "Understand the basic Subject + Verb sentence pattern.",
+    "Use the present simple for basic facts and routines.",
+    "Produce simple affirmative sentences independently."
+  ],
+  "grammar": {
+    "new": [
+      "Basic sentence structure: Subject + Verb",
+      "Present Simple affirmative"
+    ],
+    "review": [],
+    "focus": [
+      "subject and verb identification",
+      "verb agreement in basic present-simple sentences"
+    ]
+  },
+  "vocabulary": {
+    "theme": "Everyday actions",
+    "core": ["work", "study", "live", "like", "play", "eat", "drink", "read", "watch", "go"],
+    "supporting": ["English", "home", "school", "office", "music", "food", "water", "book", "Tokyo", "every day"],
+    "review": []
+  },
+  "collocations": [
+    "go to work",
+    "study English",
+    "live in Tokyo",
+    "read a book",
+    "watch TV"
+  ],
+  "sentence_patterns": [
+    "I + verb ...",
+    "You + verb ...",
+    "We + verb ...",
+    "They + verb ...",
+    "He/She + verb-s ..."
+  ],
+  "lesson_flow": [
+    "introduction",
+    "explanation",
+    "recognition",
+    "controlled_practice",
+    "guided_output",
+    "independent_output",
+    "assessment"
+  ],
+  "practice": {
+    "grammar": [
+      "Identify the subject and verb in simple sentences.",
+      "Choose the correct present-simple verb form.",
+      "Transform prompts into affirmative sentences."
+    ],
+    "vocabulary": [
+      "Match everyday action verbs with meanings.",
+      "Use target verbs in short sentences."
+    ],
+    "output": [
+      "Write five sentences about your daily activities.",
+      "Produce short present-simple sentences using the target patterns."
+    ]
+  },
+  "assessment": {
+    "grammar": [
+      "At least 7/10 correct on sentence structure and present-simple formation."
+    ],
+    "vocabulary": [
+      "Correctly use at least 7 target words in context."
+    ],
+    "output": [
+      "Produce at least 5 understandable affirmative sentences independently."
+    ]
+  },
+  "completion_criteria": {
+    "minimum_understanding": 0.7,
+    "minimum_output": 0.6
+  },
+  "next_unit": "unit-002"
+}
