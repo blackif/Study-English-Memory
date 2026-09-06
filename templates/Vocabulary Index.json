@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "words": [
+    {
+      "word": "work",
+      "first_unit": "unit-001",
+      "units": ["unit-001", "unit-003"],
+      "status": "active",
+      "mastery": {
+        "recognition": 5,
+        "meaning": 5,
+        "usage": 3,
+        "overall": 4
+      },
+      "encounter_count": 4,
+      "review_count": 2,
+      "collocations": ["go to work", "work hard"],
+      "common_errors": [],
+      "last_reviewed": "2026-09-06"
+    }
+  ]
+}
