@@ -2,12 +2,12 @@
   "schema_version":"1.2",
   "profile":{"target":"IELTS","target_timeframe_years":5,"english_variant":"British English / New Zealand English","learning_language":"English","explanation_language":"Chinese"},
   "current_level":{"id":"level-1","name":"Beginner","description":"初学者"},
-  "current_position":{"group":1,"unit_type":"learning","last_completed_unit":"unit-003","next_unit":"unit-004"},
-  "progress":{"completed_units":3,"completed_group_reviews":0,"completed_major_tests":0,"total_learning_sessions":3},
-  "vocabulary_mastery":{"introduced":54,"active":54,"mastered":0,"needs_review":0,"average_score":0.82},
-  "grammar_mastery":{"introduced":6,"active":6,"mastered":0,"needs_review":0,"average_score":1.00},
+  "current_position":{"group":1,"unit_type":"group_review","last_completed_unit":"unit-004","next_unit":"group-001-review"},
+  "progress":{"completed_units":4,"completed_group_reviews":0,"completed_major_tests":0,"total_learning_sessions":4},
+  "vocabulary_mastery":{"introduced":70,"active":70,"mastered":0,"needs_review":0,"average_score":0.80},
+  "grammar_mastery":{"introduced":8,"active":8,"mastered":0,"needs_review":0,"average_score":1.00},
   "skills":{"grammar":5,"vocabulary":5,"reading":0,"writing":5,"listening":0,"speaking":0,"output":5},
-  "assessment":{"overall_score":0.90,"latest_group_review":null,"latest_major_test":null,"weak_areas":["listening","speaking"],"strong_areas":["subject and verb identification","present simple formation","present simple negatives","do/does auxiliary use","yes/no question formation","short answers","affirmative sentence output"]},
-  "learning_focus":{"grammar":["Present Simple Wh- questions","Wh- question word meaning and selection"],"vocabulary":["where","when","why","who","what"],"errors":["wokr spelling","Tey spelling","at work","at the weekend","7 am time expression"]},
-  "system":{"initialized":true,"last_updated":"2026-09-06T17:20:00+09:00","last_session":{"unit":"unit-003","date":"2026-09-06","result":"completed","score":0.90}}
+  "assessment":{"overall_score":0.90,"latest_group_review":null,"latest_major_test":null,"weak_areas":["listening","speaking","preposition and article usage in free output","verb complement after want to"],"strong_areas":["Wh-question formation","What/Where/When/Why/Who selection","do/does auxiliary use","base verb after does","present simple formation","present simple negatives","affirmative sentence output"]},
+  "learning_focus":{"grammar":["Present Simple Wh- questions","Wh- question word meaning and selection","because + complete clause","want to + base verb"],"vocabulary":["where","when","why","who","what","before","after","because","breakfast"],"errors":["in the evening","breakfast spelling","because + complete clause","want to + verb","before work","after-work sentence order"]},
+  "system":{"initialized":true,"last_updated":"2026-09-07T13:00:00+09:00","last_session":{"unit":"unit-004","date":"2026-09-07","result":"completed","score":0.90}}
 }
