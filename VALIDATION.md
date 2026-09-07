@@ -13,7 +13,7 @@ with a known failing check.
 
 Run this checklist yourself as the AI executing the skill. Show your work
 (the numbers, the diff) inline as you go, then end with the PASS/FAIL table
-in §9.
+in §10.
 
 ---
 
@@ -32,7 +32,7 @@ each one actually did:
       topics.
 - [ ] `data/Error Index.json` — modified whenever the Unit's history records
       any error, OR the history explicitly states "no meaningful errors
-      observed" (see §5). An unmodified Error Index alongside a history file
+      observed" (see §6). An unmodified Error Index alongside a history file
       that lists errors is always a failure.
 - [ ] `curriculum/unit-(N+1).json` (or the scheduled review/test file)
       created, unless it already exists.
@@ -84,17 +84,50 @@ values (5 fields × 2 mastery blocks). Any mismatch is a failure, even by
 0.01 — do not round the check itself away.
 
 ## 4. Review-count check
-For every item listed in this Unit's `vocabulary.review` or `grammar.review`
-that was actually practised in the session (not merely listed):
+This check is broader than "items the curriculum file happens to label
+`review`". It applies to **every** record in `Vocabulary Index.json` and
+`Grammar Index.json`, regardless of which bucket (`core`/`new`,
+`supporting`, `review`) the current Unit's curriculum file put it in, and
+even if the current Unit's curriculum file doesn't mention it at all (e.g.
+a word the learner used spontaneously that still got added to the index).
 
-- Confirm its `review_count` in the index increased by exactly 1 compared to
-  its value before this Unit.
-- Confirm this Unit's id was appended to its `units` array.
+The rule is a simple, checkable invariant:
 
-List every reviewed item and its before/after `review_count`. An unchanged
-`review_count` for a genuinely reviewed item is a failure.
+> For every record, `review_count` must equal `len(units) - 1`.
 
-## 5. Error Index completeness check
+Reasoning: the first entry in `units` is when the item was introduced; every
+later entry is, by definition, a moment the item was encountered again in a
+completed Unit -- which is what `review_count` is supposed to be counting.
+It does not matter whether the curriculum file tagged that word `review`,
+`supporting`, or didn't mention it at all -- if `units` grew, `review_count`
+must grow with it.
+
+For every record whose `units` array includes this Unit's id, confirm:
+- `review_count` now equals `len(units) - 1` exactly (not just "increased").
+- This Unit's id appears in `units` at most once.
+
+List every such record with its `units` array and `review_count`, and mark
+mismatches explicitly -- do not eyeball it, count the array length.
+
+## 5. Vocabulary/grammar re-introduction check
+For every item in this Unit's `vocabulary.core` (or `grammar.new`), check
+whether a record for it **already exists** in `Vocabulary Index.json` /
+`Grammar Index.json` from an earlier Unit.
+
+- If no prior record exists, the item is genuinely new -- fine as-is.
+- If a prior record exists, this item must **not** stay in `core`/`new`.
+  Move it to `vocabulary.review` / `grammar.review` in the curriculum file,
+  unless the Unit is deliberately introducing a distinct new sense or use of
+  the word/topic -- in which case write a one-line justification in the
+  Unit's `overview` or `objectives` explaining what is new about it (e.g. a
+  word gaining a new grammatical role, not just being repeated).
+
+An existing item silently left in `core`/`new` with no such justification is
+a failure: it mislabels review material as new material, which both
+misleads the learner about what's actually new this Unit and would let it
+skip the review bookkeeping in §4.
+
+## 6. Error Index completeness check
 Take every error mentioned in the "Errors" / "Errors reviewed" section of
 `history/unit-XXX.md` and classify each one as exactly one of:
 
@@ -113,14 +146,21 @@ Any error mentioned in history that doesn't fall cleanly into (a), (b), or
 (c) is a failure. This includes errors that only appear informally in
 `learning_focus.errors` without a matching Error Index entry.
 
-## 6. Vocabulary/collocation coverage check
+## 7. Vocabulary/collocation coverage check
 For every collocation in this Unit's `collocations` list, confirm every
 meaningful word in it appears in `vocabulary.core`, `vocabulary.supporting`,
 or `vocabulary.review` of the same Unit, and (after this completion) has a
 matching entry in `Vocabulary Index.json`. List any collocation word that
 fails this.
 
-## 7. Position/reference chain check
+Note the boundary with §5: a word the learner used spontaneously, outside
+anything planned in the curriculum file, does not need to be retrofitted
+into that Unit's vocabulary lists just because it ended up in the index —
+the curriculum file describes what the Unit intended to teach, not
+everything the learner happened to say. This check is only about words that
+appear inside the Unit's own planned `collocations`.
+
+## 8. Position/reference chain check
 - `last_completed_unit` equals this Unit's id.
 - `next_unit` equals the correct next id per `Curriculum Memory.json`'s
   group/unit list — the next learning Unit, or the Group's review id if this
@@ -131,7 +171,7 @@ fails this.
   `next_unit` points to, and its schema-appropriate `next_unit` field points
   correctly onward.
 
-## 8. No-copy-forward / no-fabrication check
+## 9. No-copy-forward / no-fabrication check
 This check catches both failure directions seen in past executions:
 - If an index file was **not modified** this completion, the corresponding
   central-state aggregate numbers must be **byte-identical** to their
@@ -142,7 +182,7 @@ This check catches both failure directions seen in past executions:
   genuinely happens to match, which should be rare) and must match §3's
   fresh recomputation, not the previous state's value copied forward.
 
-## 9. Result table
+## 10. Result table
 Fill in explicitly before reporting completion to the user:
 
 | # | Check | Result | Note |
@@ -150,11 +190,12 @@ Fill in explicitly before reporting completion to the user:
 | 1 | File-touch | PASS/FAIL | |
 | 2 | Structural conformance | PASS/FAIL | |
 | 3 | Recomputation (10 values) | PASS/FAIL | |
-| 4 | Review-count | PASS/FAIL | |
-| 5 | Error Index completeness | PASS/FAIL | |
-| 6 | Vocabulary/collocation coverage | PASS/FAIL | |
-| 7 | Position/reference chain | PASS/FAIL | |
-| 8 | No-copy-forward/no-fabrication | PASS/FAIL | |
+| 4 | Review-count invariant (all records) | PASS/FAIL | |
+| 5 | Vocabulary/grammar re-introduction | PASS/FAIL | |
+| 6 | Error Index completeness | PASS/FAIL | |
+| 7 | Vocabulary/collocation coverage | PASS/FAIL | |
+| 8 | Position/reference chain | PASS/FAIL | |
+| 9 | No-copy-forward/no-fabrication | PASS/FAIL | |
 
 If every row is PASS, the Unit completion may be reported to the user. If
 any row is FAIL, fix the underlying file(s) and re-run the whole checklist
