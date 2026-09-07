@@ -4,7 +4,7 @@
   "current_level":{"id":"level-1","name":"Beginner","description":"初学者"},
   "current_position":{"group":1,"unit_type":"group_review","last_completed_unit":"unit-004","next_unit":"group-001-review"},
   "progress":{"completed_units":4,"completed_group_reviews":0,"completed_major_tests":0,"total_learning_sessions":4},
-  "vocabulary_mastery":{"introduced":70,"active":70,"mastered":0,"needs_review":0,"average_score":0.80},
+  "vocabulary_mastery":{"introduced":71,"active":71,"mastered":0,"needs_review":0,"average_score":0.80},
   "grammar_mastery":{"introduced":8,"active":8,"mastered":0,"needs_review":0,"average_score":1.00},
   "skills":{"grammar":5,"vocabulary":5,"reading":0,"writing":5,"listening":0,"speaking":0,"output":5},
   "assessment":{"overall_score":0.90,"latest_group_review":null,"latest_major_test":null,"weak_areas":["listening","speaking","preposition and article usage in free output","verb complement after want to"],"strong_areas":["Wh-question formation","What/Where/When/Why/Who selection","do/does auxiliary use","base verb after does","present simple formation","present simple negatives","affirmative sentence output"]},
